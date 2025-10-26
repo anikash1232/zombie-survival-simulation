@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Survivor implements ISurvivor {
     private Base base;
-    private static boolean flag = false;
+    private volatile boolean flag = false;
 
     public Survivor(Base base) {
         this.base = base;
@@ -12,7 +12,7 @@ public class Survivor implements ISurvivor {
 
     @Override
     public void stop() {
-        flag = true;
+        flag = false;
     }
 
     @Override
@@ -50,8 +50,8 @@ public class Survivor implements ISurvivor {
     }
 
     protected void fortify() throws InterruptedException {
-        base.useTool("fortification");
         System.out.println("Survivor is fortifying the base!");
+        base.useTool("fortification");
         Thread.sleep(2000);
     }
 
