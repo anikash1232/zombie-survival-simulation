@@ -6,6 +6,8 @@ public class RandomZombieAttacksStrategy implements IDayStrategy {
     int attackDuration = (int) (milliseconds * 0.2);
     int restDuration = (int) (milliseconds * 0.2);
 
+    Thread.sleep(milliseconds - (2 * attackDuration + restDuration));
+
     base.startAttack();
     Thread.sleep(attackDuration);
     base.endAttack();
