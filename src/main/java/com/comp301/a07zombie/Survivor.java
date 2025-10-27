@@ -12,7 +12,7 @@ public class Survivor implements ISurvivor {
 
     @Override
     public void stop() {
-        flag = false;
+        flag = true;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class Survivor implements ISurvivor {
             rest();
         } else if (zeroThruTwo == 1) {
             scavenge();
-        } else if (zeroThruTwo == 2) {
+        } else {
             fortify();
         }
     }
