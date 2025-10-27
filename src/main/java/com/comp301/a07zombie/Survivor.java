@@ -36,7 +36,6 @@ public class Survivor implements ISurvivor {
     protected void performAction() throws InterruptedException {
         if (base.isUnderAttack()) {
             defend();
-            return;
         }
 
         Random random = new Random();
