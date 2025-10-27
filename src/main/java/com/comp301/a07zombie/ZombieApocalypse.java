@@ -6,7 +6,7 @@ public class ZombieApocalypse {
   protected static Thread[] survivorThreads;
 
   public static void main(String[] args) throws InterruptedException {
-    IDayStrategy strategy = new RandomZombieAttacksStrategy();
+    IDayStrategy strategy = new MidnightMadnessStrategy();
     startSimulation(5);
     simulateDayNightCycle(20000, strategy);
     endSimulation();

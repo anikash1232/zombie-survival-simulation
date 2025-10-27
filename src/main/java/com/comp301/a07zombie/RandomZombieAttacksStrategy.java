@@ -3,20 +3,19 @@ package com.comp301.a07zombie;
 public class RandomZombieAttacksStrategy implements IDayStrategy {
   @Override
   public void execute(Base base, int milliseconds) throws InterruptedException {
-      long period = milliseconds / 5;
+    int attackDuration = (int) (milliseconds * 0.2);
+    int restDuration = (int) (milliseconds * 0.2);
 
-      Thread.sleep(period);
+    base.startAttack();
+    Thread.sleep(attackDuration);
+    base.endAttack();
 
-      base.startAttack();
-      Thread.sleep(period);
-      base.endAttack();
+    Thread.sleep(restDuration);
 
-      Thread.sleep(period);
+    base.startAttack();
+    Thread.sleep(attackDuration);
+    base.endAttack();
 
-      base.startAttack();
-      Thread.sleep(period);
-      base.endAttack();
-
-      Thread.sleep(period);
+    Thread.sleep(milliseconds - (2 * attackDuration + restDuration));
   }
 }
