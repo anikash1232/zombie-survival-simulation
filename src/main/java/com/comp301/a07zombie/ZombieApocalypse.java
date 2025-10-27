@@ -25,7 +25,7 @@ public class ZombieApocalypse {
   }
 
   public static void simulateDayNightCycle(int milliseconds, IDayStrategy events)
-          throws InterruptedException {
+      throws InterruptedException {
     events.execute(base, milliseconds);
   }
 
