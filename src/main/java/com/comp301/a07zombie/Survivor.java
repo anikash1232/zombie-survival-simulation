@@ -5,10 +5,17 @@ import java.util.Random;
 public class Survivor implements ISurvivor {
     private Base base;
     private volatile boolean flag = false;
+    private boolean defending = false;
+
 
     public Survivor(Base base) {
         this.base = base;
     }
+
+    public synchronized boolean isDefending() {
+        return defending;
+    }
+
 
     @Override
     public void stop() {
@@ -27,6 +34,11 @@ public class Survivor implements ISurvivor {
     }
 
     protected void performAction() throws InterruptedException {
+        if (base.isUnderAttack()) {
+            defend();
+            return;
+        }
+
         Random random = new Random();
         int zeroThruTwo = random.nextInt(3);
 
@@ -59,4 +71,12 @@ public class Survivor implements ISurvivor {
         System.out.println("Survivor is resting!");
         Thread.sleep(2000);
     }
+
+    protected void defend() throws InterruptedException {
+        defending = true;
+        System.out.println("Survivors are defending!");
+        Thread.sleep(2000);
+        defending = false;
+    }
+
 }
